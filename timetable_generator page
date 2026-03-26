@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Timetable Generator</title>
+<link rel="stylesheet" href="timetable.css">
+</head>
+
+<body>
+
+<h1>Smart Timetable Generator</h1>
+
+<button onclick="generateTimetable()">Generate Timetable</button>
+
+<!-- NEXT CLASS ALERT BOX -->
+<div id="nextClassBox" style="
+background:#e6f7ff;
+padding:15px;
+border-radius:8px;
+width:300px;
+margin-bottom:20px;
+">
+
+<h3>Next Class</h3>
+
+<p id="classSubject"></p>
+<p id="classTeacher"></p>
+<p id="classRoom"></p>
+<p id="classTime"></p>
+<p id="classType"></p>
+<p id="classCountdown" style="color:red;font-weight:bold;"></p>
+
+</div>
+
+<p id="warning" style="color:red"></p>
+
+<table>
+
+<thead>
+<tr>
+<th>Day</th>
+<th>9-10</th>
+<th>10-11</th>
+<th>11-12</th>
+<th>12-1</th>
+<th>Break</th>
+<th>2-3</th>
+</tr>
+</thead>
+
+<tbody id="tableBody"></tbody>
+
+</table>
+
+
+<script>
+
+// SUBJECT DATA
+const subjects = [
+{subject:"DBMS", teacher:"Dr Vani Agarwal", duration:1},
+{subject:"computer system organisation", teacher:"Dr Pallavi khatri", duration:1},
+{subject:"DSA", teacher:"Bhavesh khatri", duration:1},
+{subject:"Mathematics", teacher:"Manish jain", duration:1},
+
+{subject:"Data Analytics lab", teacher:"Dr.Sanjay jain", duration:2},
+{subject:"Design Thinking Lab", teacher:"Ashish Chandel", duration:2}
+]
+
+// STORAGE FOR GENERATED SCHEDULE
+let generatedSchedule = []
+
+function generateTimetable(){
+
+generatedSchedule = []
+
+const days = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
+
+const slots = ["9-10","10-11","11-12","12-1","Break","2-3"]
+
+const rooms = ["Room 201","Room 202","503","102"]
+
+let tableBody = document.getElementById("tableBody")
+
+tableBody.innerHTML=""
+
+days.forEach(day=>{
+
+let usedSubjects = []
+
+let row = `<tr><td>${day}</td>`
+
+for(let i=0;i<slots.length;i++){
+
+// BREAK SLOT
+if(slots[i] === "Break"){
+
+row += `<td class="break">Break</td>`
+continue
+
+}
+
+let available = subjects.filter(s=>!usedSubjects.includes(s.subject))
+
+let random = available[Math.floor(Math.random()*available.length)]
+
+let room = rooms[Math.floor(Math.random()*rooms.length)]
+
+// SAVE CLASS FOR ALERT SYSTEM
+generatedSchedule.push({
+day: day,
+time: slots[i],
+subject: random.subject,
+teacher: random.teacher,
+room: room,
+type: random.duration==2 ? "Lab" : "Theory"
+})
+
+
+// LAB SLOT
+if(random.duration==2 && i<slots.length-1 && slots[i+1]!="Break"){
+
+row += `
+<td colspan="2" class="lab">
+<b>${random.subject}</b><br>
+${random.teacher}<br>
+${room}<br>
+Lab (2 hrs)
+</td>
+`
+
+usedSubjects.push(random.subject)
+
+i++
+
+}
+
+// THEORY SLOT
+else{
+
+row += `
+<td class="theory">
+<b>${random.subject}</b><br>
+${random.teacher}<br>
+${room}
+</td>
+`
+
+usedSubjects.push(random.subject)
+
+}
+
+}
+
+row += "</tr>"
+
+tableBody.innerHTML += row
+
+})
+
+// UPDATE NEXT CLASS AFTER GENERATION
+checkNextClass()
+
+}
+
+
+// FUNCTION TO FIND NEXT CLASS
+function checkNextClass(){
+
+let now = new Date()
+
+let today = now.toLocaleString("en-US",{weekday:"long"})
+
+let hour = now.getHours()
+let minute = now.getMinutes()
+
+let currentMinutes = hour*60 + minute
+
+let nextClass = null
+let minDiff = Infinity
+
+generatedSchedule.forEach(cls=>{
+
+if(cls.day !== today) return
+
+let startHour = parseInt(cls.time.split("-")[0])
+
+let startMinutes = startHour * 60
+
+let diff = startMinutes - currentMinutes
+
+if(diff >= 0 && diff < minDiff){
+
+minDiff = diff
+nextClass = cls
+
+}
+
+})
+
+if(nextClass){
+
+document.getElementById("classSubject").innerText = nextClass.subject
+document.getElementById("classTeacher").innerText = "Teacher: " + nextClass.teacher
+document.getElementById("classRoom").innerText = "Room: " + nextClass.room
+document.getElementById("classTime").innerText = "Time: " + nextClass.time
+document.getElementById("classType").innerText = "Type: " + nextClass.type
+document.getElementById("classCountdown").innerText = "Starts in " + minDiff + " minutes"
+
+}
+
+}
+
+
+setInterval(checkNextClass,60000)
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<div class="logo">
+🎓
+<div>
+<h3>SmartTimetable</h3>
+<p>Alert System</p>
+</div>
+</div>
+
+<div class="profile">
+<div class="avatar">K</div>
+<div>
+<h4>kamini</h4>
+<span class="role admin">Admin</span>
+</div>
+</div>
+
+<ul class="menu">
+<li class="active">Dashboard</li>
+<li>Timetable</li>
+<li>Users</li>
+<li>Subjects</li>
+<li>Events</li>
+<li>Reports</li>
+</ul>
+
+<div class="logout">Sign Out</div>
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="main">
+
+<div class="header">
+<h2>Dashboard</h2>
+<span id="date"></span>
+</div>
+
+<!-- HERO PANEL -->
+
+<div class="hero">
+
+<div>
+<p class="tag">ADMIN PANEL</p>
+<h1>Admin Dashboard</h1>
+<p>Manage the entire campus timetable system.</p>
+</div>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat-card">
+<p>Total Users</p>
+<h2>8</h2>
+</div>
+
+<div class="stat-card">
+<p>Teachers</p>
+<h2>4</h2>
+</div>
+
+<div class="stat-card">
+<p>Students</p>
+<h2>2</h2>
+</div>
+
+<div class="stat-card">
+<p>Subjects</p>
+<h2>12</h2>
+</div>
+
+<div class="stat-card">
+<p>Events</p>
+<h2>6</h2>
+</div>
+
+<div class="stat-card danger">
+<p>Missed</p>
+<h2>4</h2>
+</div>
+
+</div>
+
+
+<!-- ABSENCE REPORT -->
+
+<div class="report">
+
+<h3>Today's Absence Reports</h3>
+
+<div class="empty">
+
+<p>No absence reports today</p>
+<span>All clear! ✨</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RECENT SUBSTITUTIONS -->
+
+<div class="substitutions">
+
+<h3>Recent Substitutions</h3>
+
+<div class="sub-list">
+
+<div class="sub-item">
+<div>
+<h4>Mathematics</h4>
+<p>18/02/2026 • Teacher on leave - substitute assigned</p>
+</div>
+<span class="badge success">Sub Assigned</span>
+</div>
+
+<div class="sub-item">
+<div>
+<h4>Data Structures</h4>
+<p>19/02/2026 • No substitute available</p>
+</div>
+<span class="badge warning">Free Period</span>
+</div>
+
+<div class="sub-item">
+<div>
+<h4>Physics</h4>
+<p>17/02/2026 • Conference - substitute arranged</p>
+</div>
+<span class="badge success">Sub Assigned</span>
+</div>
+
+<div class="sub-item">
+<div>
+<h4>Computer Science</h4>
+<p>20/02/2026 • Event clash</p>
+</div>
+<span class="badge danger">Cancelled</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script >
+    let today = new Date()
+
+let options = {
+weekday:"long",
+day:"numeric",
+month:"long",
+year:"numeric"
+}
+
+document.getElementById("date").innerText =
+today.toLocaleDateString("en-US", options)
+</script>
+
+</body>
+</html>
