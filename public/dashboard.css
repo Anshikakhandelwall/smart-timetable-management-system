@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+body {
+    background: #f5f7fb;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 250px;
+    background: #85a7d4;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.profile {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #1db5a5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.role {
+    background: #1db5a5;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.menu {
+    list-style: none;
+}
+
+
+
+.menu li {
+    padding: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+}
+
+.menu li a :hover {
+    text-decoration: none;
+}
+
+.menu li:hover {
+    background: #5484b1;
+}
+
+.active {
+    background: #449bed;
+}
+
+.logout {
+    margin-top: 20px;
+    cursor: pointer;
+    
+}
+
+
+.logout a{
+display:block;
+padding:12px;
+background:#1c4c7a;
+color:white;
+text-decoration:none;
+border-radius:8px;
+text-align:center;
+font-weight:bold;
+transition:0.3s;
+}
+
+.logout a:hover{
+background:#25639c;
+}
+
+
+/* MAIN */
+
+.main {
+    flex: 1;
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+.welcome {
+    background: linear-gradient(135deg, #0b3c5d, #0f5f82);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.day {
+    color: #7fffd4;
+    font-weight: bold;
+}
+
+.class-count {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+/* ALERT */
+
+.alert {
+    background: #e6f7f5;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+
+/* LECTURES */
+
+.section-title {
+    margin-bottom: 10px;
+}
+
+.lecture {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.time {
+    font-weight: bold;
+}
+
+.status {
+    background: #ffe6c4;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
