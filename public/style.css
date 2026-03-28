@@ -142,3 +142,19 @@ color:#0f5f82;
 text-decoration:none;
 font-weight:bold;
 }
+
+.forgot-password{
+margin:10px 0 20px;
+text-align:right;
+}
+
+.forgot-password a{
+text-decoration:none;
+color:#1c4c7a;
+font-size:14px;
+font-weight:500;
+}
+
+.forgot-password a:hover{
+text-decoration:underline;
+}
