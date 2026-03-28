@@ -59,6 +59,8 @@ router.post('/login', (req, res) => {
 router.post('/forgot-password', (req, res) => {
   const { email } = req.body;
 
+  const otp = "123456";
+
   db.query(
     'SELECT * FROM users WHERE email = ?',
     [email],
