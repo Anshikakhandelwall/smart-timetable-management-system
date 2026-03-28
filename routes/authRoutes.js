@@ -50,7 +50,7 @@ router.post('/login', (req, res) => {
 
     res.json({
       message: 'Login successful',
-      redirect: '/dashboard.html'
+      redirect: 'dashboard.html'
     });
   });
 });

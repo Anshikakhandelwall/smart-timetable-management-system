@@ -19,18 +19,18 @@ VALUES
 (
   'Rahul Sharma',
   'rahul@college.edu',
-  '$2b$10$8Hf7KJw2mQpZsL9vXrTn2eY5cD1gU7bW4mNqP6aR3tY8uI5oL2kGm',
+  '$2b$10$aW6NSulM2c5qqV2Bjq2RAu4Lu1hD3DryB1HFPQ0.aBNkphnonvavi',
   'student'
 ),
 (
   'Priya Verma',
   'priya@college.edu',
-  '$2b$10$4LmN8vQpR2sXcT6yU1wZ9aB5dF7gH3jK0nPqM8rS2tV6yX1zC4dEf',
-  'teacher'
+  '$2b$10$TudXkvtucvkAtdzFfXjp2.FAgEqaNSRcvd5oJIQ2Bwwt9dscS.Wau',
+  'student'
 ),
 (
   'Admin User',
   'admin@college.edu',
-  '$2b$10$9TgH3kLmP2qRsV8xY1zA5bC7dE4fG6hJ0kN9mQ2rS5tU8vW1xYzAb',
+  '$2b$10$ooAsFzd6QWXI93HTikvGbO9myMbKGBtRsBCM3r3/TXVuqOQfVsaGe',
   'admin'
 );
