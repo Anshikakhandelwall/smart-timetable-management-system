@@ -16,44 +16,43 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// LOGIN
-router.post('/login', (req, res) => {
-  const { email, password } = req.body;
+//LOGIN
 
-  const sql = 'SELECT * FROM users WHERE email = ?';
+router.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-  db.query(sql, [email], async (err, result) => {
-    if (err) {
-      return res.status(500).json({ message: 'Database error' });
-    }
+    const sql = 'SELECT * FROM users WHERE email = ?';
 
-    if (result.length === 0) {
-      return res.status(400).json({ message: 'Invalid email or password' });
-    }
+    db.query(sql, [email], async (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ message: 'Database error' });
+      }
 
-    const user = result[0];
+      if (results.length === 0) {
+        return res.status(404).json({ message: 'User not found' });
+      }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+      const user = results[0];
 
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid email or password' });
-    }
-    req.session.userId = user.user_id;
-    req.session.role = user.role;
+      const isMatch = await bcrypt.compare(password, user.password);
 
-    if (user.is_first_login === 1) {
-      return res.json({
-        message: 'First login - change password required',
-        redirect: '/firstchangepassword.html'
+      if (!isMatch) {
+        return res.status(401).json({ message: 'Invalid password' });
+      }
+
+      res.json({
+        message: 'Login successful',
+        redirect: '/dashboard.html'
       });
-    }
-
-    res.json({
-      message: 'Login successful',
-      redirect: 'dashboard.html'
     });
-  });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Server error' });
+  }
 });
+
 
 // SEND OTP
 router.post('/forgot-password', (req, res) => {
