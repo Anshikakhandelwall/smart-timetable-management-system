@@ -22,12 +22,14 @@ VALUES
   '$2b$10$aW6NSulM2c5qqV2Bjq2RAu4Lu1hD3DryB1HFPQ0.aBNkphnonvavi',
   'student'
 ),
+
 (
   'Priya Verma',
   'priya@college.edu',
   '$2b$10$TudXkvtucvkAtdzFfXjp2.FAgEqaNSRcvd5oJIQ2Bwwt9dscS.Wau',
   'student'
 ),
+
 (
   'Admin User',
   'admin@college.edu',

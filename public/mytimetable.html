@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Smart Timetable Generator</title>
-<link rel="stylesheet" href="mytimetable.css">
-</head>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Timetable</title>
+   <link rel="stylesheet" href="mytimetable.css">
+</head>
 <body>
 
-<div class ="container">
+  <div class="container">
+
 <!-- SIDEBAR -->
 
 <div class="sidebar">
@@ -29,226 +32,372 @@
 
 
 <ul class="menu">
-<li><a href="dashboard.html">Dashboard</a></li>
-<li class="active"><a href="mytimetable.html">My Timetable</a></li>
+<li class="active"><a href="dashboard.html">Dashboard</a></li>
+<li><a href="mytimetable.html">My Timetable</a></li>
 <li><a href="iks.html">IKS Credits</a></li>
 <li><a href="events.html">Events</a></li>
 <li><a href="changepassword.html">Change Password </a></li>
 </ul>
 
-<div class="logout"><a href="Sign Out.html">Sign Out</a></div>
-</div>
-
-<div class="main">
-
-<h1>Smart Timetable Generator</h1>
-
-<button onclick="generateTimetable()">Generate Timetable</button>
-
-<!-- NEXT CLASS ALERT BOX -->
-<div id="nextClassBox" style="
-background:#e6f7ff;
-padding:15px;
-border-radius:8px;
-width:300px;
-margin-bottom:20px;
-">
-
-<h3>Next Class</h3>
-
-<p id="classSubject"></p>
-<p id="classTeacher"></p>
-<p id="classRoom"></p>
-<p id="classTime"></p>
-<p id="classType"></p>
-<p id="classCountdown" style="color:red;font-weight:bold;"></p>
+<div class="logout">
+        <a href="signin.html" onclick="logoutUser()">Sign Out</a>
+      </div>
 
 </div>
 
-<p id="warning" style="color:red"></p>
 
-<table>
+    <!-- MAIN CONTENT -->
+    <div class="main">
 
-<thead>
-<tr>
-<th>Day</th>
-<th>9-10</th>
-<th>10-11</th>
-<th>11-12</th>
-<th>12-1</th>
-<th>Break</th>
-<th>2-3</th>
-</tr>
-</thead>
+      <div class="header">
+        <div>
+          <h2>My Timetable</h2>
+          <p class="subtitle">Your weekly class schedule</p>
+        </div>
 
-<tbody id="tableBody"></tbody>
+        <div class="header-actions">
+          <button class="download-btn">Download PDF</button>
+        </div>
+      </div>
 
-</table>
+      <!-- TOP CARDS -->
+      <div class="summary-cards">
+
+        <div class="summary-card">
+          <h3>Total Subjects</h3>
+          <p>6</p>
+        </div>
+
+        <div class="summary-card">
+          <h3>Classes This Week</h3>
+          <p>28</p>
+        </div>
+
+        <div class="summary-card">
+          <h3>Labs</h3>
+          <p>4</p>
+        </div>
+
+        <div class="summary-card">
+          <h3>Free Hours</h3>
+          <p>7</p>
+        </div>
+
+      </div>
+
+      <!-- TIMETABLE TABLE -->
+      <div class="table-container">
+        <table>
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>9:20 - 10:10</th>
+        <th>10:10 - 11:00</th>
+        <th>11:00 - 11:50</th>
+        <th>11:50 - 12:40</th>
+        <th>12:40 - 1:40</th>
+        <th>1:40 - 2:30</th>
+        <th>2:30 - 3:20</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td class="day">Monday</td>
+
+        <td>
+          <div class="subject-card ml">
+            <h4>Machine Learning</h4>
+            <p>Room 301</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card dbms">
+            <h4>DBMS</h4>
+            <p>Lab C</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card maths">
+            <h4>Mathematics</h4>
+            <p>Room 102</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card english">
+            <h4>English</h4>
+            <p>Room 204</p>
+          </div>
+        </td>
+
+        <td class="break">Break</td>
+
+        <td>
+          <div class="subject-card lab">
+            <h4>Computer Lab</h4>
+            <p>Lab A</p>
+          </div>
+        </td>
+
+        <td>-</td>
+      </tr>
+
+      <tr>
+        <td class="day">Tuesday</td>
+
+        <td>
+          <div class="subject-card dbms">
+            <h4>DBMS</h4>
+            <p>Lab C</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card ml">
+            <h4>Machine Learning</h4>
+            <p>Room 301</p>
+          </div>
+        </td>
+
+        <td>-</td>
+
+        <td>
+          <div class="subject-card maths">
+            <h4>Mathematics</h4>
+            <p>Room 102</p>
+          </div>
+        </td>
+
+        <td class="break">Break</td>
+
+        <td>
+          <div class="subject-card english">
+            <h4>English</h4>
+            <p>Room 204</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card lab">
+            <h4>Computer Lab</h4>
+            <p>Lab A</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="day">Wednesday</td>
+
+        <td>
+          <div class="subject-card maths">
+            <h4>Mathematics</h4>
+            <p>Room 102</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card english">
+            <h4>English</h4>
+            <p>Room 204</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card ml">
+            <h4>Machine Learning</h4>
+            <p>Room 301</p>
+          </div>
+        </td>
+
+        <td>-</td>
+
+        <td class="break">Break</td>
+
+        <td>
+          <div class="subject-card dbms">
+            <h4>DBMS</h4>
+            <p>Lab C</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card lab">
+            <h4>Computer Lab</h4>
+            <p>Lab A</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="day">Thursday</td>
+
+        <td>
+          <div class="subject-card ml">
+            <h4>Machine Learning</h4>
+            <p>Room 301</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card maths">
+            <h4>Mathematics</h4>
+            <p>Room 102</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card dbms">
+            <h4>DBMS</h4>
+            <p>Lab C</p>
+          </div>
+        </td>
+
+        <td>-</td>
+
+        <td class="break">Break</td>
+
+        <td>
+          <div class="subject-card english">
+            <h4>English</h4>
+            <p>Room 204</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card lab">
+            <h4>Computer Lab</h4>
+            <p>Lab A</p>
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="day">Friday</td>
+
+        <td>
+          <div class="subject-card english">
+            <h4>English</h4>
+            <p>Room 204</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card lab">
+            <h4>Computer Lab</h4>
+            <p>Lab A</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card maths">
+            <h4>Mathematics</h4>
+            <p>Room 102</p>
+          </div>
+        </td>
+
+        <td>
+          <div class="subject-card ml">
+            <h4>Machine Learning</h4>
+            <p>Room 301</p>
+          </div>
+        </td>
+
+        <td class="break">Break</td>
+
+        <td>
+          <div class="subject-card dbms">
+            <h4>DBMS</h4>
+            <p>Lab C</p>
+          </div>
+        </td>
+
+        <td>-</td>
+      </tr>
+
+      <tr>
+        <td class="day">Saturday</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td class="break">Break</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-</div>
 
 
+
+      <!-- LEGEND -->
+      <div class="legend">
+        <div><span class="box ml-box"></span> Machine Learning</div>
+        <div><span class="box dbms-box"></span> DBMS</div>
+        <div><span class="box maths-box"></span> Mathematics</div>
+        <div><span class="box english-box"></span> English</div>
+        <div><span class="box lab-box"></span> Lab</div>
+      </div>
+
+    </div>
+
+  </div>
+  
 <script>
+  // Student Name from Local Storage
+  const studentName = localStorage.getItem("studentName") || "Levi Ackerman";
+  document.querySelector(".profile h4").innerText = studentName;
 
-// SUBJECT DATA
-const subjects = [
-{subject:"DBMS", teacher:"Dr Vani Agarwal", duration:1},
-{subject:"computer system organisation", teacher:"Dr Pallavi khatri", duration:1},
-{subject:"DSA", teacher:"Bhavesh khatri", duration:1},
-{subject:"Mathematics", teacher:"Manish jain", duration:1},
+  // Avatar Letter
+  document.querySelector(".avatar").innerText = studentName.charAt(0).toUpperCase();
 
-{subject:"Data Analytics lab", teacher:"Dr.Sanjay jain", duration:2},
-{subject:"Design Thinking Lab", teacher:"Ashish Chandel", duration:2}
-]
+  // Download Timetable as PDF
+  document.querySelector(".download-btn").addEventListener("click", () => {
+    window.print();
+  });
 
-// STORAGE FOR GENERATED SCHEDULE
-let generatedSchedule = []
+  // Logout Function
+  document.querySelector(".logout a").addEventListener("click", function () {
+    localStorage.removeItem("token");
+    localStorage.removeItem("studentName");
+  });
 
-function generateTimetable(){
+  // Example Dynamic Timetable Data
+  const timetableData = [
+    {
+      time: "09:00 - 10:00",
+      monday: { subject: "Machine Learning", room: "Room 301", class: "ml" },
+      tuesday: { subject: "DBMS", room: "Lab C", class: "dbms" },
+      wednesday: { subject: "Mathematics", room: "Room 102", class: "maths" },
+      thursday: { subject: "Machine Learning", room: "Room 301", class: "ml" },
+      friday: { subject: "English", room: "Room 204", class: "english" },
+      saturday: null
+    },
+    {
+      time: "10:15 - 11:15",
+      monday: { subject: "DBMS", room: "Lab C", class: "dbms" },
+      tuesday: null,
+      wednesday: { subject: "English", room: "Room 204", class: "english" },
+      thursday: { subject: "Mathematics", room: "Room 102", class: "maths" },
+      friday: { subject: "Computer Lab", room: "Lab A", class: "lab" },
+      saturday: null
+    }
+  ];
 
-generatedSchedule = []
-
-const days = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
-
-const slots = ["9-10","10-11","11-12","12-1","Break","2-3"]
-
-const rooms = ["Room 201","Room 202","503","102"]
-
-let tableBody = document.getElementById("tableBody")
-
-tableBody.innerHTML=""
-
-days.forEach(day=>{
-
-let usedSubjects = []
-
-let row = `<tr><td>${day}</td>`
-
-for(let i=0;i<slots.length;i++){
-
-// BREAK SLOT
-if(slots[i] === "Break"){
-
-row += `<td class="break">Break</td>`
-continue
-
-}
-
-let available = subjects.filter(s=>!usedSubjects.includes(s.subject))
-
-let random = available[Math.floor(Math.random()*available.length)]
-
-let room = rooms[Math.floor(Math.random()*rooms.length)]
-
-// SAVE CLASS FOR ALERT SYSTEM
-generatedSchedule.push({
-day: day,
-time: slots[i],
-subject: random.subject,
-teacher: random.teacher,
-room: room,
-type: random.duration==2 ? "Lab" : "Theory"
-})
-
-
-// LAB SLOT
-if(random.duration==2 && i<slots.length-1 && slots[i+1]!="Break"){
-
-row += `
-<td colspan="2" class="lab">
-<b>${random.subject}</b><br>
-${random.teacher}<br>
-${room}<br>
-Lab (2 hrs)
-</td>
-`
-
-usedSubjects.push(random.subject)
-
-i++
-
-}
-
-// THEORY SLOT
-else{
-
-row += `
-<td class="theory">
-<b>${random.subject}</b><br>
-${random.teacher}<br>
-${room}
-</td>
-`
-
-usedSubjects.push(random.subject)
-
-}
-
-}
-
-row += "</tr>"
-
-tableBody.innerHTML += row
-
-})
-
-// UPDATE NEXT CLASS AFTER GENERATION
-checkNextClass()
-
-}
-
-
-// FUNCTION TO FIND NEXT CLASS
-function checkNextClass(){
-
-let now = new Date()
-
-let today = now.toLocaleString("en-US",{weekday:"long"})
-
-let hour = now.getHours()
-let minute = now.getMinutes()
-
-let currentMinutes = hour*60 + minute
-
-let nextClass = null
-let minDiff = Infinity
-
-generatedSchedule.forEach(cls=>{
-
-if(cls.day !== today) return
-
-let startHour = parseInt(cls.time.split("-")[0])
-
-let startMinutes = startHour * 60
-
-let diff = startMinutes - currentMinutes
-
-if(diff >= 0 && diff < minDiff){
-
-minDiff = diff
-nextClass = cls
-
-}
-
-})
-
-if(nextClass){
-
-document.getElementById("classSubject").innerText = nextClass.subject
-document.getElementById("classTeacher").innerText = "Teacher: " + nextClass.teacher
-document.getElementById("classRoom").innerText = "Room: " + nextClass.room
-document.getElementById("classTime").innerText = "Time: " + nextClass.time
-document.getElementById("classType").innerText = "Type: " + nextClass.type
-document.getElementById("classCountdown").innerText = "Starts in " + minDiff + " minutes"
-
-}
-
-}
-
-
-setInterval(checkNextClass,60000)
-
+  // Later you can generate table rows dynamically from backend
+  // Example:
+  // fetch('http://localhost:3000/api/student/timetable')
+  //   .then(response => response.json())
+  //   .then(data => {
+  //      console.log(data)
+  //   });
 </script>
+
 
 </body>
 </html>
+
+
